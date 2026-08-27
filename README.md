@@ -53,10 +53,12 @@
 
 ## Render Web Service
 
+В репозитории есть `runtime.txt` с Python 3.12.10. Это важно: текущая версия aiogram 3.13.1 не устанавливается на Python 3.14, потому что её зависимость pydantic-core пытается собираться через Rust.
+
 Бот работает через webhook, поэтому на Render выбирай **Web Service**, а не Background Worker.
 
 Настройки: 
-- Runtime: Python 3
+- Runtime: Python 3.12 (Render возьмёт версию из `runtime.txt`)
 - Build Command: `pip install -r requirements.txt`
 - Start Command: `python bot.py`
 - Health Check Path: `/` (необязательно)
